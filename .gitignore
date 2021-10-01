@@ -1,9 +1,10 @@
 /log
 /temp
-/bin/
-!/bin/custom
+/bin/*
+!/bin/custom/
 /roles
 /data
 /config/*
 !/config/local.properties
 !/config/localextensions.xml
+.idea/

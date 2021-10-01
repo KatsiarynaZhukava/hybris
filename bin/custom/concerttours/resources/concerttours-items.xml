@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			  xsi:noNamespaceSchemaLocation="items.xsd">
+
+	<collectiontypes>
+		<collectiontype code="BandMemberCollection" elementtype="BandMember" type="set" generate="true" autocreate="true" />
+	</collectiontypes>
+	
+	<enumtypes>  
+		<enumtype code="ConcertType" autocreate="true" generate="true" dynamic="false">
+			<value code="openair" />
+			<value code="indoor" />
+		</enumtype>
+		<enumtype code="MusicType" autocreate="true" generate="true" dynamic="true">
+			<value code="classical" />
+			<value code="jazz" />
+			<value code="rock" />
+		</enumtype>
+		<enumtype code="Instrument" autocreate="true" generate="true" dynamic="true">
+		</enumtype>
+		<enumtype code="TicketType" autocreate="true" generate="true" dynamic="false">
+			<value code="general_admission" />
+			<value code="vip" />
+		</enumtype>
+	</enumtypes>
+	
+	<maptypes>
+		<maptype code="BandToRating"
+				 argumenttype="Band"
+				 returntype="java.lang.Integer"
+				 autocreate="true"
+				 generate="false"/>
+	</maptypes>
+
+	<relations>
+		<relation code="Product2RockBand" autocreate="true" generate="false" localized="false">
+			<sourceElement qualifier="tours" type="Product" collectiontype="set" cardinality="many" ordered="false">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</sourceElement>
+			<targetElement qualifier="band" type="Band" cardinality="one">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			 </targetElement>
+		</relation>
+		<relation code="Band2MusicType" autocreate="true" generate="false" localized="false">
+			<deployment table="Band2MusicType" typecode="30269" />
+			<sourceElement qualifier="bands" type="Band" collectiontype="set" cardinality="many" ordered="false">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</sourceElement>
+			<targetElement qualifier="types" type="MusicType" cardinality="many">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</targetElement>
+		</relation>
+    </relations>	
+			
+	<itemtypes>
+		<itemtype generate="true" code="Product" autocreate="false">
+			<attributes>
+				<attribute qualifier="hashtag" type="java.lang.String">
+					<description>hashtag of concert tour for social media</description>
+					<persistence type="property" />
+				</attribute>
+			</attributes>
+		</itemtype>
+		<itemtype generate="true" code="Band" autocreate="true">
+			<deployment table="Bands" typecode="30268" />
+			<attributes>
+				<attribute qualifier="code" type="java.lang.String">
+					<description>short unique code of band</description>
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="name" type="java.lang.String">
+					<description>name of band</description>
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="history" type="java.lang.String">
+					<description>history of band</description>
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="albumSales" type="java.lang.Long">
+					<description>official global album sales</description>
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="members" type="BandMemberCollection">
+					<description>list of band members</description>
+					<persistence type="property" />
+				</attribute>
+			</attributes>
+		</itemtype>
+		<itemtype generate="true" code="Concert" extends="VariantProduct" autocreate="true">
+			<attributes>
+				<attribute qualifier="venue" type="java.lang.String">
+					<description>venue of concert</description>
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="date" type="java.util.Date">
+					 <description>date of concert</description>
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="concertType" type="ConcertType">
+					<description>type of concert (indoors or open air)</description>
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="daysUntil" type="java.lang.Long">
+					<persistence type="dynamic" attributeHandler="concertDaysUntilAttributeHandler" />
+					<modifiers read="true" write="false" />
+				</attribute>
+			 </attributes>
+        </itemtype>
+		<itemtype generate="true" code="BandMember" autocreate="true">
+			<deployment table="BandMembers" typecode="30270" />
+			<attributes>
+				<attribute qualifier="code" type="java.lang.String">
+					<description>short unique code of band member</description>
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="firstName" type="java.lang.String">
+					<description>band member's first name</description>
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="lastName" type="java.lang.String">
+					<description>band member's last name</description>
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="instrument" type="Instrument">
+					<description>band member's musical instrument</description>
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="fullName" type="java.lang.String">
+					<persistence type="dynamic" attributeHandler="fullNameAttributeHandler"/>
+					<modifiers read="true" write="true" unique="false"/>
+				</attribute>
+			 </attributes>
+        </itemtype>
+	</itemtypes>
+</items>

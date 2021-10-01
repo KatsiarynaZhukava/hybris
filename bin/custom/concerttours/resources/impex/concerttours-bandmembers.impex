@@ -1,0 +1,23 @@
+INSERT_UPDATE BandMember;code[unique=true] ;firstName ;lastName ;instrument(code)
+                        ;BM000             ;James     ;Hetfield ;guitar
+                        ;BM001             ;Lars      ;Ulrich   ;drums
+                        ;BM002             ;Kirk      ;Hammett  ;guitar
+                        ;BM003             ;Roberto   ;Trujillo ;guitar
+                        ;BM004             ;Freddie   ;Mercury  ;piano
+                        ;BM005             ;Brian     ;May      ;guitar
+                        ;BM006             ;Roger     ;Taylor   ;guitar
+                        ;BM007             ;John      ;Deacon   ;bass guitar
+                        ;BM008             ;Robert    ;Plant    ;vocals
+                        ;BM009             ;Jimmy     ;Page     ;guitar
+                        ;BM010             ;John Paul ;Jones    ;bass guitar
+                        ;BM011             ;John      ;Bonham   ;drums
+                        ;BM012             ;Steven    ;Tyler    ;vocals
+                        ;BM013             ;Joe       ;Perry    ;guitar
+                        ;BM014             ;Tom       ;Hamilton ;bass guitar
+                        ;BM015             ;Joey      ;Kramer   ;drums
+                        ;BM016             ;Brad      ;Whitford ;guitar
+                        ;BM017             ;Brian     ;Johnson  ;vocals
+                        ;BM018             ;Angus     ;Young    ;guitar
+                        ;BM019             ;Stevie    ;Young    ;rhythm guitar
+                        ;BM020             ;Cliff     ;Williams ;bass guitar
+                        ;BM021             ;Phil      ;Rudd     ;drums
