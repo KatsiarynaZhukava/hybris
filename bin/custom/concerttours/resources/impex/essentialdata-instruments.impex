@@ -1,0 +1,8 @@
+INSERT_UPDATE Instrument;code[unique=true]
+                        ;piano
+                        ;guitar
+                        ;bass guitar
+                        ;drums
+                        ;violin
+                        ;vocals
+                        ;rhythm guitar
