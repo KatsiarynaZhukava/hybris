@@ -1,6 +1,6 @@
 INSERT_UPDATE Band;code[unique=true] ;name         ;albumSales ;members(code)                 ;history
-                  ;A001              ;Metallica    ;1000000    ;BM000,BM001,BM002,BM003       ;Occasional tribute rock band comprising senior managers from a leading commerce software vendor
-                  ;A006              ;Queen        ;           ;BM004,BM005,BM006,BM007       ;Dutch tribute rock band formed in 2013 playing classic rock tunes from the sixties, seventies and eighties
-                  ;A003              ;Led Zeppelin ;7          ;BM008,BM009,BM010,BM011       ;Experimental Jazz group from London playing many musical notes together in unexpected combinations and sequences
-                  ;A002              ;Aerosmith    ;2000       ;BM012,BM013,BM014,BM015,BM016 ;A cappella singing group based in Munich; an uplifting blend of traditional and contemporaneous songs
-                  ;A005              ;AC/DC        ;49000      ;BM017,BM018,BM019,BM020,BM021 ;Enthusiastic, noisy gospel choir singing traditional gospel songs from the deep south
+                  ;A001              ;Metallica    ;4242424    ;BM000,BM001,BM002,BM003       ;Occasional tribute rock band comprising senior managers from a leading commerce software vendor
+                  ;A004              ;Queen        ;           ;BM004,BM005,BM006,BM007       ;Dutch tribute rock band formed in 2013 playing classic rock tunes from the sixties, seventies and eighties
+                  ;A003              ;Led Zeppelin ;450000     ;BM008,BM009,BM010,BM011       ;Experimental Jazz group from London playing many musical notes together in unexpected combinations and sequences
+                  ;A002              ;Aerosmith    ;200000     ;BM012,BM013,BM014,BM015,BM016 ;A cappella singing group based in Munich; an uplifting blend of traditional and contemporaneous songs
+                  ;A005              ;AC/DC        ;4900000    ;BM017,BM018,BM019,BM020,BM021 ;Enthusiastic, noisy gospel choir singing traditional gospel songs from the deep south

@@ -1,12 +1,13 @@
 package concerttours.daos.impl;
-import concerttours.model.ConcertModel;
-import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
-import de.hybris.platform.servicelayer.search.FlexibleSearchService;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
 import concerttours.daos.BandDAO;
 import concerttours.model.BandModel;
+import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
+import de.hybris.platform.servicelayer.search.FlexibleSearchService;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+import java.util.List;
  
 @Component(value = "bandDAO")
 public class DefaultBandDAO implements BandDAO
@@ -17,7 +18,7 @@ public class DefaultBandDAO implements BandDAO
             "FROM {" + BandModel._TYPECODE + " AS p} " +
             "WHERE " + "{p:" + BandModel.CODE + "}=?code ";
 
-    @Autowired
+    @Resource
     private FlexibleSearchService flexibleSearchService;
 
     @Override

@@ -16,15 +16,4 @@ public class FullNameAttributeHandler extends AbstractDynamicAttributeHandler<St
         }
         return bandMember.getFirstName() + " " + bandMember.getLastName();
     }
-
-	@Override
-	public void set(final BandMemberModel bandMember, final String value)
-	{
-		if (bandMember != null && value != null)
-		{
-			String[] split = value.split(" ");
-            bandMember.setFirstName(split[0]);
-            bandMember.setLastName(split[1]);
-		}
-	}
 }
