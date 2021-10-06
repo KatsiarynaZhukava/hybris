@@ -1,6 +1,3 @@
-/*
- * Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
- */
 package concerttours.setup;
 
 import static concerttours.constants.ConcerttoursConstants.PLATFORM_LOGO_CODE;

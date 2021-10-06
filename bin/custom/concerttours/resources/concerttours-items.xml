@@ -25,9 +25,9 @@
 	</enumtypes>
 	
 	<maptypes>
-		<maptype code="BandToRating"
-				 argumenttype="Band"
-				 returntype="java.lang.Integer"
+		<maptype code="BandToPerformanceOrderMap"
+				 argumenttype="java.lang.Long"
+				 returntype="Band"
 				 autocreate="true"
 				 generate="false"/>
 	</maptypes>
@@ -104,7 +104,11 @@
 					<persistence type="dynamic" attributeHandler="concertDaysUntilAttributeHandler" />
 					<modifiers read="true" write="false" />
 				</attribute>
-			 </attributes>
+				<attribute qualifier="bandToPerformanceOrderMap" type="BandToPerformanceOrderMap">
+					<modifiers read="true" write="true"/>
+					<persistence type="property" />
+				</attribute>
+			</attributes>
         </itemtype>
 		<itemtype generate="true" code="BandMember" autocreate="true">
 			<deployment table="BandMembers" typecode="30270" />
@@ -127,7 +131,7 @@
 				</attribute>
 				<attribute qualifier="fullName" type="java.lang.String">
 					<persistence type="dynamic" attributeHandler="fullNameAttributeHandler"/>
-					<modifiers read="true" write="true" unique="false"/>
+					<modifiers read="true" write="false" unique="false"/>
 				</attribute>
 			 </attributes>
         </itemtype>

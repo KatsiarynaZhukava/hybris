@@ -12,6 +12,10 @@
 	<bean id = "defaultBandService" class = "concerttours.service.impl.DefaultBandService" >
 		<property name = "bandDAO" ref = "bandDAO" />
 	</bean>
+
+    <bean id = "concertService" class = "concerttours.service.impl.DefaultConcertService" >
+        <property name = "concertDAO" ref = "concertDAO" />
+    </bean>
 	
     <bean id="concerttoursSystemSetup" class="concerttours.setup.ConcerttoursSystemSetup">
         <constructor-arg ref="concerttoursService"/>

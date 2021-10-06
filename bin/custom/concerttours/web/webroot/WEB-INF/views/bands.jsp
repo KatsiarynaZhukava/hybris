@@ -7,9 +7,9 @@
         <table>
             <thead>
                 <tr>
-                    <td>Name</td>
-                    <td>History</td>
-                    <td>Album sales</td>
+                    <th>Name</th>
+                    <th>History</th>
+                    <th>Album sales</th>
                 </tr>
             </thead>
             <tbody>
