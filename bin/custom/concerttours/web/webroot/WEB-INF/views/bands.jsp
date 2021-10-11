@@ -10,14 +10,20 @@
                     <th>Name</th>
                     <th>History</th>
                     <th>Album sales</th>
+                    <th>Music types</th>
                 </tr>
             </thead>
             <tbody>
             <c:forEach var="band" items="${bands}">
                 <tr>
-                    <td><a href = "<c:url value = "/bands/${band.code}"/>">${band.name}</a></td>
-                    <td>${band.history}</td>
-                    <td>${band.albumSales}</td>
+                    <td><a href = "<c:url value = "/bands/${band.id}"/>">${band.name}</a></td>
+                    <td>${band.description}</td>
+                    <td>${band.albumsSold}</td>
+                    <td>
+                        <c:forEach var="genre" items="${band.genres}">
+                            <c:out value="${genre}  "/>
+                        </c:forEach>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>

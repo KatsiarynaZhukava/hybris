@@ -1,6 +1,6 @@
 package concerttours.daos.impl;
 
-import concerttours.daos.ConcertDao;
+import concerttours.daos.ConcertDAO;
 import concerttours.model.ConcertModel;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.FlexibleSearchService;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component(value = "concertDAO")
-public class DefaultConcertDao implements ConcertDao {
+public class DefaultConcertDAO implements ConcertDAO {
     @Autowired
     private FlexibleSearchService flexibleSearchService;
 

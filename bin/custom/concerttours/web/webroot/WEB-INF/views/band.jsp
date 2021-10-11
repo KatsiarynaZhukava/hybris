@@ -5,8 +5,8 @@
 </head>
     <body>
         <p>${band.name}</p>
-        <p>${band.history}</p>
-        <p>Album sales: ${band.albumSales}</p>
+        <p>${band.description}</p>
+        <p>Album sales: ${band.albumsSold}</p>
         <p>Members: </p>
         <table>
             <thead>
@@ -22,5 +22,9 @@
                 </c:forEach>
             </tbody>
         </table>
+        <h5>Music types: </h5>
+        <c:forEach var="genre" items="${band.genres}">
+            <p><c:out value="${genre}"/></p>
+        </c:forEach>
     </body>
 </html>

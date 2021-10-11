@@ -55,7 +55,7 @@
 	<itemtypes>
 		<itemtype generate="true" code="Product" autocreate="false">
 			<attributes>
-				<attribute qualifier="hashtag" type="java.lang.String">
+				<attribute qualifier="hashtag" type="localized:java.lang.String">
 					<description>hashtag of concert tour for social media</description>
 					<persistence type="property" />
 				</attribute>
@@ -72,7 +72,7 @@
 					<description>name of band</description>
 					<persistence type="property" />
 				</attribute>
-				<attribute qualifier="history" type="java.lang.String">
+				<attribute qualifier="history" type="localized:java.lang.String">
 					<description>history of band</description>
 					<persistence type="property" />
 				</attribute>
@@ -135,5 +135,31 @@
 				</attribute>
 			 </attributes>
         </itemtype>
+		<itemtype generate="true" code="News" autocreate="true">
+			<deployment table="News" typecode="30271" />
+			<attributes>
+				<attribute qualifier="date" type="java.util.Date">
+					<description>date of news item</description>
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="headline" type="java.lang.String">
+					<description>short headline for the news item</description>
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="content" type="java.lang.String">
+					<description>fuller description of the news item</description>
+					<persistence type="property" />
+				</attribute>
+			</attributes>
+		</itemtype>
+		<itemtype generate="true" code="TokenItem" autocreate="true">
+			<deployment table="TokenItem" typecode="30274" />
+			<attributes>
+				<attribute qualifier="tokenField" type="java.lang.String">
+					<description>token field for the Cronjob task</description>
+					<persistence type="property" />
+				</attribute>
+			</attributes>
+		</itemtype>
 	</itemtypes>
 </items>
