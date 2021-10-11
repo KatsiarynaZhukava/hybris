@@ -11,17 +11,15 @@
                     <td>Date</td>
                     <td>Type</td>
                     <td>DaysUntil</td>
-                    <td>Hashtag</td>
                 </tr>
             </thead>
             <tbody>
             <c:forEach var="concert" items="${concerts}">
                 <tr>
-                    <td><a href = "<c:url value = "/concerts/${concert.code}"/>">${concert.venue}</a></td>
+                    <td><a href = "<c:url value = "/concerts/${concert.id}"/>">${concert.venue}</a></td>
                     <td>${concert.date}</td>
-                    <td>${concert.concertType}</td>
+                    <td>${concert.type}</td>
                     <td>${concert.daysUntil}</td>
-                    <td>${concert.hashtag}</td>
                 </tr>
             </c:forEach>
             </tbody>

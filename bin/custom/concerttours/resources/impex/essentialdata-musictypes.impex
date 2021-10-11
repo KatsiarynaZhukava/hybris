@@ -10,4 +10,12 @@ INSERT_UPDATE MusicType;code[unique=true]
                        ;eighties
                        ;nineties
                        ;maleVocals
-                       ;femaleVocals
+                       ;metal
+                       ;hardRock
+                       ;indieRock
+                       ;punk
+                       ;heavyMetal
+                       ;folkRock
+                       ;alternativeRock
+                       ;progressiveRock
+                       ;trashMetal

@@ -1,7 +1,6 @@
 package concerttours.controller;
 
-
-import concerttours.service.ConcertService;
+import concerttours.facades.ConcertFacade;
 import de.hybris.platform.catalog.CatalogVersionService;
 import de.hybris.platform.servicelayer.exceptions.AmbiguousIdentifierException;
 import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
@@ -20,13 +19,13 @@ public class ConcertsController
 	@Resource
 	private CatalogVersionService catalogVersionService;
 	@Resource
-	private ConcertService concertService;
+	private ConcertFacade concertFacade;
 
 	@GetMapping(value = "/concerts")
 	public String getConcerts(final ModelMap model)
 	{
 		catalogVersionService.setSessionCatalogVersion(CATALOG_ID,"Online");
-		model.addAttribute("concerts", concertService.getConcerts());
+		model.addAttribute("concerts", concertFacade.getConcerts());
         return "concerts";
 	}
 
@@ -36,7 +35,7 @@ public class ConcertsController
 		catalogVersionService.setSessionCatalogVersion(CATALOG_ID,"Online");
 		ModelAndView modelAndView = new ModelAndView();
 		try {
-			modelAndView.addObject("concert", concertService.getConcertByCode(code));
+			modelAndView.addObject("concert", concertFacade.getConcert(code));
 			modelAndView.setViewName("concert");
 		} catch (NullPointerException | AmbiguousIdentifierException e) {
 			modelAndView.setStatus(HttpStatus.BAD_REQUEST);

@@ -1,0 +1,8 @@
+$lang=de
+
+INSERT_UPDATE Band;code[unique=true] ;history[lang=$lang]
+                  ;A001              ;Gelegentliche Tribut-Rock-Band bestehend aus Führungskräften eines führenden Commerce-Software-Anbieters
+                  ;A004              ;Die niederländische Tribut-Rock-Band, die im Jahr 2013 mit klassischen Rock-Melodien aus den sechziger, siebziger und achtziger Jahren gegründet wurde
+                  ;A003              ;Experimental Jazz Gruppe aus London, die viele musikalische Notizen zusammen in unerwarteten Kombinationen und Sequenzen spielt
+                  ;A002              ;A cappella singing group mit Sitz in München; Eine erhebende Mischung aus traditionellen und zeitgenössischen Liedern
+                  ;A005              ;Enthusiastischer, lärmender Gospelchor singt traditionelle Gospel-Songs aus dem tiefen Süden

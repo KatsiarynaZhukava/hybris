@@ -4,7 +4,7 @@ import concerttours.model.ConcertModel;
 
 import java.util.List;
 
-public interface ConcertDao
+public interface ConcertDAO
 {
     List<ConcertModel> findConcerts();
     List<ConcertModel> findConcertsByCode(String code);
