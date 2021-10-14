@@ -10,6 +10,7 @@ import de.hybris.platform.servicelayer.dto.converter.ConversionException;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class BandConverter implements Converter<BandModel, BandData> {
@@ -29,7 +30,7 @@ public class BandConverter implements Converter<BandModel, BandData> {
         bandData.setId(bandModel.getCode());
         bandData.setAlbumsSold(bandModel.getAlbumSales());
         bandData.setName(bandModel.getName());
-        bandData.setDescription(bandModel.getHistory());
+        bandData.setDescription(bandModel.getHistory(Locale.ENGLISH));
         List<TourSummaryData> tours = bandModel.getTours()
                     .stream()
                     .map(tour -> {

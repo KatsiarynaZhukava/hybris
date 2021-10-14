@@ -15,7 +15,8 @@
         <property name = "members" type="java.util.List&lt;BandMemberData&gt;" />
         <property name = "genres" type="java.util.List&lt;String&gt;"/>
         <property name = "tours" type="java.util.List&lt;concerttours.data.TourSummaryData&gt;"/>
-	</bean>
+        <property name="imageURL" type="String" />
+    </bean>
     <bean class = "concerttours.data.BandMemberData" >
         <description>Data object representing a Band Member</description>
         <property name = "id" type = "String" />

@@ -1,51 +1,47 @@
 package concerttours.controller;
-
-import concerttours.facades.BandFacade;
-import concerttours.service.BandService;
 import de.hybris.platform.catalog.CatalogVersionService;
-import de.hybris.platform.servicelayer.exceptions.AmbiguousIdentifierException;
-import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
-import org.springframework.http.HttpStatus;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.servlet.ModelAndView;
-import javax.annotation.Resource;
-
-import static concerttours.constants.ConcerttoursConstants.CATALOG_ID;
+import org.springframework.web.bind.annotation.RequestMapping;
+import concerttours.data.BandData;
+import concerttours.facades.BandFacade;
 
 @Controller
 public class BandsController
 {
-	@Resource
+	private static final String CATALOG_ID = "concertoursProductCatalog";
+	private static final String CATALOG_VERSION_NAME = "Online";
 	private CatalogVersionService catalogVersionService;
-	@Resource
 	private BandFacade bandFacade;
 
-	@GetMapping(value = "/bands")
-	public String getBands(final ModelMap model)
-	{
-		catalogVersionService.setSessionCatalogVersion(CATALOG_ID,"Online");
+	@RequestMapping(value = "/bands")
+	public String showBands(final Model model) {
+		catalogVersionService.setSessionCatalogVersion(CATALOG_ID, CATALOG_VERSION_NAME);
 		model.addAttribute("bands", bandFacade.getBands());
 		return "bands";
 	}
 
-	@GetMapping(value = "/bands/{code}")
-	public ModelAndView getBand(final @PathVariable String code)
-	{
-		catalogVersionService.setSessionCatalogVersion(CATALOG_ID,"Online");
-		ModelAndView modelAndView = new ModelAndView();
-		try {
-			modelAndView.addObject("band", bandFacade.getBand(code));
-			modelAndView.setViewName("band");
-		} catch (NullPointerException | AmbiguousIdentifierException e) {
-			modelAndView.setStatus(HttpStatus.BAD_REQUEST);
-			modelAndView.setViewName("400");
-		} catch (UnknownIdentifierException ex) {
-			modelAndView.setStatus(HttpStatus.NOT_FOUND);
-			modelAndView.setViewName("404");
-		}
-		return modelAndView;
+	@RequestMapping(value = "/bands/{bandId}")
+	public String showBandDetails(@PathVariable final String bandId,
+								  final Model model) throws UnsupportedEncodingException {
+		catalogVersionService.setSessionCatalogVersion(CATALOG_ID, CATALOG_VERSION_NAME);
+		final String decodedBandId = URLDecoder.decode(bandId, "UTF-8");
+		model.addAttribute("band", bandFacade.getBand(decodedBandId));
+		return "band";
+	}
+
+	@Autowired
+	public void setCatalogVersionService(final CatalogVersionService catalogVersionServiceService) {
+		this.catalogVersionService = catalogVersionServiceService;
+	}
+
+	@Autowired
+	public void setFacade(final BandFacade facade) {
+		this.bandFacade = facade;
 	}
 }

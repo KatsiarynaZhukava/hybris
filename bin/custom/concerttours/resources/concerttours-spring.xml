@@ -39,17 +39,26 @@
     <bean id="concertConverter" class="concerttours.converters.ConcertConverter">
         <property name = "bandConverter" ref = "bandConverter" />
     </bean>
+    <bean id="tourConverter" class="concerttours.converters.TourConverter"/>
 
     <alias name = "defaultBandFacade" alias = "bandFacade" />
     <bean id = "defaultBandFacade" class ="concerttours.facades.impl.DefaultBandFacade" >
         <property name = "bandService" ref = "bandService" />
         <property name = "bandConverter" ref = "bandConverter" />
+        <property name="mediaService" ref="mediaService"/>
+        <property name="configurationService" ref="configurationService" />
     </bean>
 
     <alias name="defaultConcertFacade" alias="concertFacade" />
     <bean id="defaultConcertFacade" class ="concerttours.facades.impl.DefaultConcertFacade" >
         <property name="concertService" ref="concertService" />
         <property name="concertConverter" ref="concertConverter" />
+    </bean>
+
+    <alias name = "defaultTourFacade" alias = "tourFacade" />
+    <bean id = "defaultTourFacade" class ="concerttours.facades.impl.DefaultTourFacade" >
+        <property name="tourConverter" ref="tourConverter"/>
+        <property name="productService" ref="productService"/>
     </bean>
 
     <bean id="concerttourEventListener" class="concerttours.events.NewBandEventListener" parent="abstractEventListener">

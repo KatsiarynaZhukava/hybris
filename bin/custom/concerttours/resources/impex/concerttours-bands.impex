@@ -1,6 +1,37 @@
-INSERT_UPDATE Band;code[unique=true] ;name         ;albumSales ;members(code)                  ;types(code)                                 ;tours(code)
-                  ;A001              ;Metallica    ;4242424    ;BM000,BM001,BM002,BM003        ;progressiveRock,alternativeRock,trashMetal  ;201701
-                  ;A004              ;Queen        ;           ;BM004,BM005,BM006,BM007        ;rock                                        ;201701
-                  ;A003              ;Led Zeppelin ;450000     ;BM008,BM009,BM010,BM011        ;hardRock,heavyMetal,folkRock                ;201701
-                  ;A002              ;Aerosmith    ;200000     ;BM012,BM013,BM014,BM015,BM016  ;hardRock,heavyMetal                         ;201701
-                  ;A005              ;AC/DC        ;4900000    ;BM017,BM018,BM019,BM020,BM021  ;hardRock,heavyMetal                         ;201701
+$productCatalog=concertoursProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default=$productCatalog:Online]
+$medias=medias(code, $catalogVersion)
+$siteResource=jar:concerttours.constants.ConcerttoursConstants&/concerttours/bandimages
+
+INSERT_UPDATE Catalog ;id[unique=true]
+                      ;$productCatalog
+
+INSERT_UPDATE CatalogVersion ;catalog(id)[unique=true] ;version[unique=true] ;active ;languages(isoCode) ;readPrincipals(uid)
+                             ;$productCatalog          ;Online               ;true   ;en                 ;employeegroup
+
+INSERT_UPDATE Media ;mediaFormat(qualifier) ;code[unique=true]    ;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator] ;mime[default='image/jpeg'] ;$catalogVersion
+                    ;bandList               ;metallicaSmall.jpg   ;$siteResource/metallicaSmall.jpg;                                          ;
+                    ;bandDetail             ;metallicaBig.jpg     ;$siteResource/metallicaBig.jpg;                                            ;
+                    ;bandList               ;queenSmall.jpg       ;$siteResource/queenSmall.jpg;                                              ;
+                    ;bandDetail             ;queenBig.jpg         ;$siteResource/queenBig.jpg;                                                ;
+                    ;bandList               ;ledzeppelinSmall.jpg ;$siteResource/ledzeppelinSmall.jpg;                                        ;
+                    ;bandDetail             ;ledzeppelinBig.jpg   ;$siteResource/ledzeppelinBig.jpg;                                          ;
+                    ;bandList               ;aerosmithSmall.jpg   ;$siteResource/aerosmithSmall.jpg;                                          ;
+                    ;bandDetail             ;aerosmithBig.jpg     ;$siteResource/aerosmithBig.jpg;                                            ;
+                    ;bandList               ;acdcSmall.jpg        ;$siteResource/acdcSmall.jpg;                                               ;
+                    ;bandDetail             ;acdcBig.jpg          ;$siteResource/acdcBig.jpg;                                                 ;
+
+INSERT_UPDATE MediaContainer ;qualifier[unique=true] ;$medias                                 ;$catalogVersion
+                             ;MetallicaImage         ;metallicaSmall.jpg,metallicaBig.jpg     ;
+                             ;QueenImage             ;queenSmall.jpg,queenBig.jpg             ;
+                             ;LedZeppelinImage       ;ledzeppelinSmall.jpg,ledzeppelinBig.jpg ;
+                             ;AerosmithImage         ;aerosmithSmall.jpg,aerosmithBig.jpg     ;
+                             ;ACDCImage              ;acdcSmall.jpg,acdcBig.jpg               ;
+
+
+INSERT_UPDATE Band ;code[unique=true] ;name         ;albumSales ;image(qualifier) ;members(code)                  ;types(code)                                 ;tours(code)
+                   ;A001              ;Metallica    ;4242424    ;MetallicaImage   ;BM000,BM001,BM002,BM003        ;progressiveRock,alternativeRock,trashMetal  ;201701
+                   ;A004              ;Queen        ;           ;QueenImage       ;BM004,BM005,BM006,BM007        ;rock                                        ;201701
+                   ;A003              ;Led Zeppelin ;450000     ;LedZeppelinImage ;BM008,BM009,BM010,BM011        ;hardRock,heavyMetal,folkRock                ;201701
+                   ;A002              ;Aerosmith    ;200000     ;AerosmithImage   ;BM012,BM013,BM014,BM015,BM016  ;hardRock,heavyMetal                         ;201701
+                   ;A005              ;AC/DC        ;4900000    ;ACDCImage        ;BM017,BM018,BM019,BM020,BM021  ;hardRock,heavyMetal                         ;201701

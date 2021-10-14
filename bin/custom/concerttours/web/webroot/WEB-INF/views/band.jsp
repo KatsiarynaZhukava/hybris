@@ -5,6 +5,7 @@
 </head>
     <body>
         <p>${band.name}</p>
+        <p><img src="${band.imageURL}"/></p>
         <p>${band.description}</p>
         <p>Album sales: ${band.albumsSold}</p>
         <p>Members: </p>
@@ -26,5 +27,11 @@
         <c:forEach var="genre" items="${band.genres}">
             <p><c:out value="${genre}"/></p>
         </c:forEach>
+        <ul>
+            <c:forEach var="tour" items="${band.tours}">
+                <li><a href="../tours/${tour.id}">${tour.tourName}</a>(number of concerts: ${tour.numberOfConcerts})</li>
+            </c:forEach>
+        </ul>
+        <a href="../bands">Back to Band List</a>
     </body>
 </html>

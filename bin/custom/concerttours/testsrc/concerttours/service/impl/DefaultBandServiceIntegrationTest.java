@@ -9,7 +9,6 @@ import de.hybris.platform.servicelayer.model.ModelService;
 import de.hybris.platform.variants.model.VariantProductModel;
 import java.lang.InterruptedException;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import javax.annotation.Resource;
@@ -72,6 +71,7 @@ public class DefaultBandServiceIntegrationTest extends ServicelayerTest
     public void testBandServiceTours() throws Exception
     {
         createCoreData();
+        importCsv("/impex/essentialdata-mediaformats.impex", "UTF-8");
         importCsv("/impex/concerttours-bands.impex", "utf-8");
         importCsv("/impex/concerttours-yBandTour.impex", "utf-8");
         final BandModel band = bandService.getBandForCode("A001");
