@@ -6,6 +6,7 @@ import concerttours.data.TourSummaryData;
 import concerttours.enums.MusicType;
 import concerttours.model.BandMemberModel;
 import concerttours.model.BandModel;
+import de.hybris.platform.jalo.JaloSession;
 import de.hybris.platform.servicelayer.dto.converter.ConversionException;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 
@@ -30,7 +31,7 @@ public class BandConverter implements Converter<BandModel, BandData> {
         bandData.setId(bandModel.getCode());
         bandData.setAlbumsSold(bandModel.getAlbumSales());
         bandData.setName(bandModel.getName());
-        bandData.setDescription(bandModel.getHistory(Locale.ENGLISH));
+        bandData.setDescription(bandModel.getHistory());
         List<TourSummaryData> tours = bandModel.getTours()
                     .stream()
                     .map(tour -> {
