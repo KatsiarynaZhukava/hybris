@@ -8,10 +8,13 @@ import de.hybris.platform.core.model.product.ProductModel;
 import de.hybris.platform.servicelayer.dto.converter.ConversionException;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 import de.hybris.platform.variants.model.VariantProductModel;
+import org.springframework.beans.factory.annotation.Required;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class TourConverter implements Converter<ProductModel, TourData> {
+    private ProducerConverter producerConverter;
 
     @Override
     public TourData convert(final ProductModel source) throws ConversionException {
@@ -40,6 +43,11 @@ public class TourConverter implements Converter<ProductModel, TourData> {
         tourData.setTourName(productModel.getName());
         tourData.setDescription(productModel.getDescription());
         tourData.setConcerts(concerts);
+        tourData.setProducer(producerConverter.convert(productModel.getProducer()));
         return tourData;
+    }
+    @Required
+    public void setProducerConverter(ProducerConverter producerConverter) {
+        this.producerConverter = producerConverter;
     }
 }

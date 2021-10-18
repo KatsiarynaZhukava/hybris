@@ -21,6 +21,7 @@
                 </tr>
             </c:forEach>
         </table>
+        <p>Producer: <c:out value="${tour.producer.firstName} ${tour.producer.lastName} "/></p>
         <a href="../bands">Back to Band List</a>
     </body>
 </html>

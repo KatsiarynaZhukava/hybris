@@ -13,6 +13,11 @@
 		<property name = "bandDAO" ref = "bandDAO" />
 	</bean>
 
+    <alias name = "defaultProducerService" alias = "producerService" />
+    <bean id = "defaultProducerService" class = "concerttours.service.impl.DefaultProducerService" >
+        <property name = "producerDAO" ref = "producerDAO" />
+    </bean>
+
     <bean id = "concertService" class = "concerttours.service.impl.DefaultConcertService" >
         <property name="concertDAO" ref = "concertDAO" />
     </bean>
@@ -39,7 +44,10 @@
     <bean id="concertConverter" class="concerttours.converters.ConcertConverter">
         <property name = "bandConverter" ref = "bandConverter" />
     </bean>
-    <bean id="tourConverter" class="concerttours.converters.TourConverter"/>
+    <bean id="producerConverter" class="concerttours.converters.ProducerConverter"/>
+    <bean id="tourConverter" class="concerttours.converters.TourConverter">
+        <property name = "producerConverter" ref = "producerConverter" />
+    </bean>
 
     <alias name = "defaultBandFacade" alias = "bandFacade" />
     <bean id = "defaultBandFacade" class ="concerttours.facades.impl.DefaultBandFacade" >
@@ -47,6 +55,12 @@
         <property name = "bandConverter" ref = "bandConverter" />
         <property name="mediaService" ref="mediaService"/>
         <property name="configurationService" ref="configurationService" />
+    </bean>
+
+    <alias name = "defaultProducerFacade" alias = "producerFacade" />
+    <bean id = "defaultProducerFacade" class ="concerttours.facades.impl.DefaultProducerFacade" >
+        <property name = "producerService" ref = "producerService" />
+        <property name = "producerConverter" ref = "producerConverter" />
     </bean>
 
     <alias name="defaultConcertFacade" alias="concertFacade" />
