@@ -38,6 +38,7 @@ public class BandConverter implements Converter<BandModel, BandData> {
                         TourSummaryData data = new TourSummaryData();
                         data.setId(tour.getCode());
                         data.setTourName(tour.getName());
+                        data.setNumberOfConcerts(Integer.toString(tour.getVariants().size()));
                         return data;
                         })
                     .collect(Collectors.toList());
